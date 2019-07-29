@@ -14,14 +14,16 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import static org.hamcrest.Matchers.*;
+import static org.hamcrest.core.AllOf.allOf;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource(locations="classpath:test.properties")
+@TestPropertySource(locations = "classpath:test.properties")
 public class VehicleControllerTest {
 
     private static final String URL = "http://localhost";
@@ -55,14 +57,19 @@ public class VehicleControllerTest {
         ResponseEntity<Body<List<Vehicle>>> r = getForEntity(VEHICLES_PATH, Body.class);
 
         assertThat(Objects.requireNonNull(r.getBody()).getData(), hasSize(1));
-        assertThat(r.getBody().getData(), hasItem(vehicle));
+        Map<String, Object> result = (Map<String, Object>) r.getBody().getData().get(0);
+        assertThat(result.get("name"), is(vehicle.getName()));
+        assertThat(result.get("description"), is(vehicle.getDescription()));
+        assertThat(result.get("plate"), is(vehicle.getPlate()));
+        assertThat(((Map<String, Object>) (result.get("vehicleType"))).get("name"), is(vehicle.getVehicleType().getName()));
+        assertThat(((Map<String, Object>) (result.get("vehicleType"))).get("description"), is(vehicle.getVehicleType().getDescription()));
     }
 
     private ResponseEntity getForEntity(String path, Class<?> reponseType) {
-        return this.restTemplate.getForEntity(URL+":"+port+path, reponseType);
+        return this.restTemplate.getForEntity(URL + ":" + port + path, reponseType);
     }
 
     private ResponseEntity postForEntity(String path, Object body, Class<?> reponseType) {
-        return this.restTemplate.postForEntity(URL+":"+port+path, body, reponseType);
+        return this.restTemplate.postForEntity(URL + ":" + port + path, body, reponseType);
     }
 }

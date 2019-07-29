@@ -1,0 +1,27 @@
+version: '3.4'
+services:
+    vehiclesdata-service:
+      image: vehiclesdata-service
+      ports:
+        - 8080:8080
+      networks:
+        - app-net
+      build:
+        context: ./back-end/vehiclesdata/
+        dockerfile: Dockerfile
+      restart: unless-stopped
+    vehiclesdata-ui:
+      image: vehiclesdata-ui
+      depends_on:
+        - vehiclesdata-service
+      ports:
+        - 4200:80
+      networks:
+        - app-net
+      build:
+        context: ./front-end/
+        dockerfile: Dockerfile
+      restart: unless-stopped  
+
+networks:
+  app-net:
