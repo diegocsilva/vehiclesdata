@@ -1,0 +1,67 @@
+<notifier-container></notifier-container>
+<form [formGroup]="myForm" class="container-fluid" style="justify-content: center">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Cadastro de Veículo</h4>
+          <p class="card-category">Informe os dados do veículo para cadastrar.</p>
+        </div>
+        <div class="card-body" class="col-md-12 row">
+          <div class="form-group col-md-12">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" id="name" placeholder="Digite o nome do veículo"
+              formControlName="name" required #name>
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="name">Descrição</label>
+            <input type="text" class="form-control" id="description" placeholder="Digite a Descrição do veículo"
+              formControlName="description" required #description>
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="name">Placa</label>
+            <input type="text" class="form-control" id="plate" placeholder="Digite a placa do veículo"
+              formControlName="plate" required #plate>
+          </div>
+
+          <div class="form-group col-md-12 row alignRow">
+            <div class="form-group col-md-4">
+              <label for="vehicleType">Tipo do veículo</label>
+              <select class="form-control" formControlName="vehicleType" required title="Tipo do veículo" #vehicleType>
+                <option *ngFor="let type of vehiclesTypes" [ngValue]="type">
+                  <tr>
+                    <td>{{ type.name }} - </td>
+                    <td>{{ type.description }} </td>
+                  </tr>
+                </option>
+              </select>
+            </div>
+            <button-modal header="Tipos de Veículos" titleButton="Adicionar novo tipo." class="marginButton">
+              <form [formGroup]="typeForm" class="container-fluid">
+                <div class="form-group col-md-12">
+                  <label for="name">Nome</label>
+                  <input type="text" class="form-control" id="name" placeholder="Digite o nome do tipo do veículo"
+                    formControlName="name" required #name>
+                </div>
+
+                <div class="form-group col-md-12">
+                  <label for="name">Descrição</label>
+                  <input type="text" class="form-control" id="description"
+                    placeholder="Digite a Descrição do tipo do veículo" formControlName="description" required
+                    #description>
+                </div>
+                <button class="btn btn-success" (click)="saveType()">Enviar</button>
+              </form>
+            </button-modal>
+          </div>
+        </div>
+        <div class="card-action">
+          <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+          <button class="btn btn-success" (click)="save()">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

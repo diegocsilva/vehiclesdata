@@ -1,0 +1,41 @@
+<notifier-container></notifier-container>
+<form [formGroup]="myForm" class="container-fluid" style="justify-content: center">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header row">
+          <h4 class="card-title col-md-4">Listagem de Tipos Veículo</h4>
+          <div class="col-md-6"></div>
+          <button class="btn btn-success col-md-1" (click)="newVehicleType()">Novo</button>
+        </div>
+        <div class="card-body" class="col-md-12 row">
+          <div class="table-responsive">
+            <table class="table table-striped mt-3">
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let type of vehiclesTypes">
+                  <td>{{type.name}}</td>
+                  <td>{{type.description}}</td>
+                  <td>
+                    <button type="button" title="Editar" class="btn btn-info btn-sm icon-circle" (click)="editVehicleType()">
+                      <i class="la la-edit"></i>
+                    </button>
+
+                    <button type="button" title="Deletar" class="btn btn-danger btn-sm icon-circle margin-left-2em" (click)="deleteVehicleType(type.id)">
+                      <i class="la la-trash-o"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
