@@ -63,5 +63,5 @@ Com a finalidade de documentar as APIs foi adicionado o swagger para tal. O mesm
  http://localhost:8080/swagger-ui.html
  
 - Acesso instancia rodando na AWS EC2
- http://ec2-52-67-214-31.sa-east-1.compute.amazonaws.com:8080/swagger-ui.html
+http://ec2-18-231-178-205.sa-east-1.compute.amazonaws.com:8080/swagger-ui.html 
  
