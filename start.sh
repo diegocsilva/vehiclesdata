@@ -5,7 +5,9 @@ not installed, for more details, visit https://docs.docker.com/install/.  Aborti
 command -v docker-compose >/dev/null 2>&1 || { echo >&2 "I require docker-compose but it's \\
 not installed, for more details, visit https://docs.docker.com/install/.  Aborting."; exit 1; }
 echo "****************BUILDING ARTIFACTS********************************************************"
-sh docker-build/build.sh
+cd docker-build/ 
+docker-compose up
 echo "****************STARTING DOCKER CONTAINERS************************************************"
+cd ..
 docker-compose up
 echo "****************PROCESS FINISH ***********************************************************"

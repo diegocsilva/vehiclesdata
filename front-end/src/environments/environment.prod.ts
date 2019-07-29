@@ -1,4 +1,4 @@
-const api = 'http://localhost:8080';
+const api = 'http://ec2-52-67-214-31.sa-east-1.compute.amazonaws.com:8080';
 
 export const environment = {
   production: false,
