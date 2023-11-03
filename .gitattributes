@@ -1,0 +1,11 @@
+#linguist-language
+*.properties linguist-language=Java
+*.sql linguist-language=Java
+*.xml linguist-language=Java
+#linguist-vendored
+*.js linguist-vendored=false
+*.css linguist-vendored=false
+*.java linguist-vendored=false
+static/* linguist-vendored
+front-end/src/assets/* linguist-vendored
+*.scss linguist-vendored
