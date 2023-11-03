@@ -2,6 +2,7 @@
 *.properties linguist-language=Java
 *.sql linguist-language=Java
 *.xml linguist-language=Java
+back-end/* linguist-language=Java
 #linguist-vendored
 *.js linguist-vendored=false
 *.css linguist-vendored=false
